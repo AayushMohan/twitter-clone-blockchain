@@ -12,7 +12,7 @@ const style = {
   profileRight: `flex-1 flex`,
   details: `flex-1`,
   name: `text-lg`,
-  handler: `text-[#8899a6]`,
+  handle: `text-[#8899a6]`,
   moreContainer: `flex items-center mr-2`,
 }
 
@@ -32,6 +32,18 @@ const Sidebar = () => {
         <div>Profile</div>
         <div>More</div>
         <div className={style.tweetButton}>Mint</div>
+      </div>
+      <div className={style.profileButton}>
+        <div className={style.profileLeft}></div>
+        <div className={style.profileRight}>
+          <div className={style.details}>
+            <div className={style.name}>AayushMohan</div>
+            <div className={style.handle}>@0x22df...5xf2df</div>
+          </div>
+          <div className={style.moreContainer}>
+            <FiMoreHorizontal />
+          </div>
+        </div>
       </div>
     </div>
   )
