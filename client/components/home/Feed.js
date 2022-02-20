@@ -1,4 +1,5 @@
 import { BsStars } from 'react-icons/bs'
+import Post from '../Post'
 import TweetBox from './TweetBox'
 
 const style = {
@@ -43,7 +44,15 @@ const Feed = () => {
       </div>
       <TweetBox />
       {tweets.map((tweet, index) => (
-        <div></div>
+        <Post
+          key={index}
+          displayName={tweet.displayName}
+          userName={tweet.userName}
+          avatar={tweet.avatar}
+          text={tweet.text}
+          isProfileImageNFT={tweet.isProfileImageNFT}
+          timeStamp={tweet.timeStamp}
+        />
       ))}
     </div>
   )
