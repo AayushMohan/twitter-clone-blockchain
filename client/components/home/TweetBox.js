@@ -1,4 +1,12 @@
-import React, { useState } from 'react'
+import { useState, useContext } from 'react'
+import { BsCardImage, BsEmojiSmile } from 'react-icons/bs'
+import {
+  RiFileGifLine,
+  RiBarChartHorizontalFill,
+  RiBarChartHorizontalLine,
+} from 'react-icons/ri'
+import { IoMdCalendar } from 'react-icons/io'
+import { MdOutlineLocationOn } from 'react-icons/md'
 
 const style = {
   wrapper: `px-4 flex flex-row border-b border-[#38444d] pb-4`,
@@ -17,7 +25,10 @@ const style = {
 const TweetBox = () => {
   const [tweetMessage, setTweetMessage] = useState('')
 
-  console.log(tweetMessage)
+  const postTweet = (event) => {
+    event.preventDefault()
+    console.log(tweetMessage)
+  }
 
   return (
     <div className={style.wrapper}>
@@ -37,9 +48,19 @@ const TweetBox = () => {
             onChange={(e) => setTweetMessage(e.target.value)}
           />
           <div className={style.formLowerContainer}>
+            <div className={style.iconsContainer}>
+              <BsCardImage className={style.icon} />
+              <RiFileGifLine className={style.icon} />
+              <RiBarChartHorizontalLine className={style.icon} />
+              <BsEmojiSmile className={style.icon} />
+              <IoMdCalendar className={style.icon} />
+              <MdOutlineLocationOn className={style.icon} />
+            </div>
             <div className={style.iconsContainer}></div>
             <button
               type="submit"
+              disabled={!tweetMessage}
+              onClick={(event) => postTweet(event)}
               className={`${style.submitGeneral} ${
                 tweetMessage ? style.activeSubmit : style.inactiveSubmit
               }`}
