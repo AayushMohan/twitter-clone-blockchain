@@ -8,6 +8,12 @@ import { FiBell } from 'react-icons/fi'
 import { HiOutlineMail, HiMail } from 'react-icons/hi'
 import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
+import {
+  BsBookmark,
+  BsBookmarkFill,
+  BsPerson,
+  BsPersonalFill,
+} from 'react-icons/bs'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -39,13 +45,45 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
           setSelected={setSelected}
           redirect={'/'}
         />
-        <div>Explore</div>
-        <div>Notifications</div>
-        <div>Messages</div>
-        <div>Bookmarks</div>
-        <div>Lists</div>
-        <div>Profile</div>
-        <div>More</div>
+        <SidebarOption
+          Icon={selected === 'Explore' ? FaHashtag : BiHash}
+          text="Explore"
+          isActive={Boolean(selected === 'Explore')}
+          setSelected={setSelected}
+        />
+        <SidebarOption
+          Icon={selected === 'Notifications' ? FaBell : FiBell}
+          text="Notifications"
+          isActive={Boolean(selected === 'Notifications')}
+          setSelected={setSelected}
+        />
+        <SidebarOption
+          Icon={selected === 'Messages' ? HiMail : HiOutlineMail}
+          text="Messages"
+          isActive={Boolean(selected === 'Messages')}
+          setSelected={setSelected}
+        />
+        <SidebarOption
+          Icon={selected === 'Bookmarks' ? BsBookmarkFill : BsBookmark}
+          text="Bookmarks"
+          isActive={Boolean(selected === 'Bookmarks')}
+          setSelected={setSelected}
+        />
+        <SidebarOption
+          Icon={selected === 'Lists' ? RiFileList2Full : FaRegListAlt}
+          text="Lists"
+          isActive={Boolean(selected === 'Lists')}
+          setSelected={setSelected}
+        />
+        <SidebarOption
+          Icon={selected === 'Profile' ? BsPersonalFill : BsPerson}
+          text="Profile"
+          isActive={Boolean(selected === 'Profile')}
+          setSelected={setSelected}
+          redirect={'/profile'}
+        />
+        <SidebarOption Icon={CgMoreO} text="More" />
+
         <div className={style.tweetButton}>Mint</div>
       </div>
       <div className={style.profileButton}>
