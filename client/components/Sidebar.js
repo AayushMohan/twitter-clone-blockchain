@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { VscTwitter } from 'react-icons/vsc'
 import SidebarOption from './SidebarOption'
-import { RiHome7Line, RiHome7Fill, RiFileList2Full } from 'react-icons/ri'
+import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from 'react-icons/ri'
 import { BiHash } from 'react-icons/bi'
 import { FiBell } from 'react-icons/fi'
 import { HiOutlineMail, HiMail } from 'react-icons/hi'
@@ -12,7 +12,7 @@ import {
   BsBookmark,
   BsBookmarkFill,
   BsPerson,
-  BsPersonalFill,
+  BsPersonFill,
 } from 'react-icons/bs'
 
 const style = {
@@ -70,19 +70,19 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
           setSelected={setSelected}
         />
         <SidebarOption
-          Icon={selected === 'Lists' ? RiFileList2Full : FaRegListAlt}
+          Icon={selected === 'Lists' ? RiFileList2Fill : FaRegListAlt}
           text="Lists"
           isActive={Boolean(selected === 'Lists')}
           setSelected={setSelected}
         />
         <SidebarOption
-          Icon={selected === 'Profile' ? BsPersonalFill : BsPerson}
+          Icon={selected === 'Profile' ? BsPersonFill : BsPerson}
           text="Profile"
           isActive={Boolean(selected === 'Profile')}
           setSelected={setSelected}
           redirect={'/profile'}
         />
-        <SidebarOption Icon={CgMoreO} text="More" />
+        <SidebarOption Icon={CgMoreO} text="More" setSelected={setSelected} />
 
         <div className={style.tweetButton}>Mint</div>
       </div>
