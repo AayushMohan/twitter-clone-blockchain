@@ -17,7 +17,13 @@ const style = {
 }
 
 const Sidebar = () => {
-  return <div>Sidebar</div>
+  return (
+    <div className={style.wrapper}>
+      <div className={style.twitterIconContainer}>
+        <VscTwitter />
+      </div>
+    </div>
+  )
 }
 
 export default Sidebar
