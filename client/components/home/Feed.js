@@ -8,8 +8,11 @@ const style = {
 
 const Feed = () => {
   return (
-    <div className={`${style.wrapper}`}>
-      <div className={style.header}></div>
+    <div className={style.wrapper}>
+      <div className={style.header}>
+        <div className={style.headerTitle}>Home</div>
+        <BsStars />
+      </div>
     </div>
   )
 }
