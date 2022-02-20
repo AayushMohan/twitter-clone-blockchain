@@ -1,3 +1,4 @@
+import Feed from '../components/home/Feed'
 import Sidebar from '../components/Sidebar'
 
 const styles = {
@@ -10,7 +11,7 @@ export default function Home() {
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <Sidebar />
-        <h2>Feed</h2>
+        <Feed />
         <h2>Widgets</h2>
       </div>
     </div>
