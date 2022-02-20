@@ -35,7 +35,18 @@ const TweetBox = () => {
             placeholder="What's happening?"
             value={tweetMessage}
             onChange={(e) => setTweetMessage(e.target.value)}
-          ></textarea>
+          />
+          <div className={style.formLowerContainer}>
+            <div className={style.iconsContainer}></div>
+            <button
+              type="submit"
+              className={`${style.submitGeneral} ${
+                tweetMessage ? style.activeSubmit : style.inactiveSubmit
+              }`}
+            >
+              Tweet
+            </button>
+          </div>
         </form>
       </div>
     </div>
