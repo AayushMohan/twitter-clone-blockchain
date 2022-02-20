@@ -17,9 +17,9 @@ const SidebarOption = ({ text, Icon, isActive, setSelected, redirect }) => {
       <div className={style.iconContainer}>
         <Icon />
       </div>
-      <div
-        className={`${isActive ? style.textActive : style.textGeneral}`}
-      ></div>
+      <div className={`${isActive ? style.textActive : style.textGeneral}`}>
+        {text}
+      </div>
     </div>
   )
 }

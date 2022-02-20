@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { VscTwitter } from 'react-icons/vsc'
+import SidebarOption from './SidebarOption'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -16,14 +18,21 @@ const style = {
   moreContainer: `flex items-center mr-2`,
 }
 
-const Sidebar = () => {
+const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
+  const [selected, setSelected] = useState(initialSelectedIcon)
   return (
     <div className={style.wrapper}>
       <div className={style.twitterIconContainer}>
         <VscTwitter />
       </div>
       <div className={style.navContainer}>
-        <div>Home</div>
+        <SidebarOption
+          Icon={selected === 'Home' ? VscTwitter : VscTwitter}
+          text="Home"
+          isActive={Boolean(selected === 'Home')}
+          setSelected={setSelected}
+          redirect={'/'}
+        />
         <div>Explore</div>
         <div>Notifications</div>
         <div>Messages</div>
