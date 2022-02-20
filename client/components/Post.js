@@ -1,7 +1,14 @@
 import React from 'react'
 
-const Post = () => {
-  return <div>Post</div>
+const Post = ({
+  displayName,
+  userName,
+  text,
+  avatar,
+  timestamp,
+  isProfileImageNFT,
+}) => {
+  return <div></div>
 }
 
 export default Post
