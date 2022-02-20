@@ -2,6 +2,12 @@ import { useState } from 'react'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { VscTwitter } from 'react-icons/vsc'
 import SidebarOption from './SidebarOption'
+import { RiHome7Line, RiHome7Fill, RiFileList2Full } from 'react-icons/ri'
+import { BiHash } from 'react-icons/bi'
+import { FiBell } from 'react-icons/fi'
+import { HiOutlineMail, HiMail } from 'react-icons/hi'
+import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
+import { CgMoreO } from 'react-icons/cg'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -27,7 +33,7 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
       </div>
       <div className={style.navContainer}>
         <SidebarOption
-          Icon={selected === 'Home' ? VscTwitter : VscTwitter}
+          Icon={selected === 'Home' ? RiHome7Fill : RiHome7Line}
           text="Home"
           isActive={Boolean(selected === 'Home')}
           setSelected={setSelected}
