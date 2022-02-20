@@ -8,7 +8,21 @@ const Post = ({
   timestamp,
   isProfileImageNFT,
 }) => {
-  return <div></div>
+  return (
+    <div className={style.wrapper}>
+      <div>
+        <img
+          src={avatar}
+          alt={userName}
+          className={
+            isProfileImageNFT
+              ? `${style.profileImage} smallHex`
+              : style.profileImage
+          }
+        />
+      </div>
+    </div>
+  )
 }
 
 export default Post
