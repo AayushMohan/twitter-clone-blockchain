@@ -39,6 +39,7 @@ const Post = ({
         <div>
           <span className={style.headerDetails}>
             <span className={style.name}>{displayName}</span>
+            {isProfileImageNFT && <span className={style.verified}></span>}
           </span>
         </div>
       </div>
