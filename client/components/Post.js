@@ -35,6 +35,13 @@ const Post = ({
           }
         />
       </div>
+      <div className={style.postMain}>
+        <div>
+          <span className={style.headerDetails}>
+            <span className={style.name}>{displayName}</span>
+          </span>
+        </div>
+      </div>
     </div>
   )
 }
