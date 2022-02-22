@@ -39,7 +39,11 @@ const Post = ({
         <div>
           <span className={style.headerDetails}>
             <span className={style.name}>{displayName}</span>
-            {isProfileImageNFT && <span className={style.verified}></span>}
+            {isProfileImageNFT && (
+              <span className={style.verified}>
+                <BsFillCheckFill />
+              </span>
+            )}
           </span>
         </div>
       </div>
