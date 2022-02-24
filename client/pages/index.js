@@ -1,5 +1,6 @@
 import Feed from '../components/home/Feed'
 import Sidebar from '../components/Sidebar'
+import Widgets from '../components/Widgets'
 
 const styles = {
   wrapper: `flex justify-center h-screen w-screen select-none bg-[#15202b] text-white`,
@@ -12,7 +13,7 @@ export default function Home() {
       <div className={styles.content}>
         <Sidebar />
         <Feed />
-        <h2>Widgets</h2>
+        <Widgets />
       </div>
     </div>
   )
