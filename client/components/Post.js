@@ -45,9 +45,9 @@ const Post = ({
                 <BsFillCheckFill />
               </span>
             )}
-          </span>
-          <span className={style.handleAndTimeAgo}>
-            @{userName} • {format(new Date(timestamp))}
+            <span className={style.handleAndTimeAgo}>
+              @{userName} • {format(new Date(timestamp))}
+            </span>
           </span>
         </div>
       </div>
