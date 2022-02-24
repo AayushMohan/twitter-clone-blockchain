@@ -1,5 +1,6 @@
 import React from 'react'
 import { format } from 'timeago.js'
+import { FaRegComment } from 'react-icons/fa'
 
 const style = {
   wrapper: `flex p-3 border-b border-[#38444d]`,
@@ -49,6 +50,12 @@ const Post = ({
               @{userName} • {format(new Date(timestamp))}
             </span>
           </span>
+          <div className={style.tweet}>{text}</div>
+        </div>
+        <div className={style.footer}>
+          <div>
+            <FaRegComment />
+          </div>
         </div>
       </div>
     </div>
