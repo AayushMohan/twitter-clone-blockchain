@@ -47,7 +47,7 @@ const Post = ({
             )}
           </span>
           <span className={style.handleAndTimeAgo}>
-            {/* @{userName} • {format(new Date(timestamp))} */}
+            @{userName} • {format(new Date(timestamp))}
           </span>
         </div>
       </div>
