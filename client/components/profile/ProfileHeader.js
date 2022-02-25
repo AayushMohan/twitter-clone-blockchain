@@ -25,6 +25,17 @@ const ProfileHeader = () => {
         <div onClick={() => Router.push('/')} className={style.backButton}>
           <BsArrowLeftShort />
         </div>
+        <div className={style.details}>
+          <div className={style.primary}>Aayush Mohan</div>
+          <div className={style.secondary}>4 Tweets</div>
+        </div>
+      </div>
+      <div className={style.coverPhotoContainer}>
+        <img
+          src="https://pbs.twimg.com/profile_banners/1074622446437773312/1610392340/1500x500"
+          alt="cover"
+          className={style.coverPhoto}
+        />
       </div>
     </div>
   )
