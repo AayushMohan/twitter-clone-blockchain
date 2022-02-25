@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React from 'react'
+import { BsArrowLeftShort } from 'react-icons/bs'
 
 const style = {
   wrapper: `border-[#38444d] border-b`,
@@ -19,6 +20,10 @@ const style = {
 }
 
 const ProfileHeader = () => {
+  const router = useRouter()
+
+  const isProfileImageNft = false
+
   return (
     <div className={style.wrapper}>
       <div className={style.header}>
@@ -36,6 +41,19 @@ const ProfileHeader = () => {
           alt="cover"
           className={style.coverPhoto}
         />
+      </div>
+      <div className={style.profileImageContainer}>
+        <div
+          className={isProfileImageNft ? 'hex' : style.profileImageContainer}
+        >
+          <img
+            src="https://avatars.githubusercontent.com/u/66319691?v=4"
+            alt="Aayush"
+            className={
+              isProfileImageNft ? style.profileImageNft : style.profileImage
+            }
+          />
+        </div>
       </div>
     </div>
   )
