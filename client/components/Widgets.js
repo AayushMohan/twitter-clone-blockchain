@@ -42,6 +42,13 @@ const Widgets = () => {
               <div className={style.newsItemCategory}>{item.category}</div>
               <div className={style.newsItemTitle}>{item.title}</div>
             </div>
+            <div className={style.newsItemRight}>
+              <img
+                src={item.image}
+                alt={item.category}
+                className={style.newsItemImage}
+              />
+            </div>
           </div>
         ))}
       </div>
