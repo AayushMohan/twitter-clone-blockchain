@@ -9,7 +9,7 @@ const style = {
   section: `bg-[#192734] my-6 rounded-xl overflow-hidden`,
   title: `p-2 font-bold text-lg`,
   showMore: `p-2 text-[#1d9bf0] text-sm cursor-pointer hover:bg-[#22303c]`,
-  item: `flex items-center p-3 my-2 hover:bg-[#22203c] cursor-pointer`,
+  item: `flex items-center p-3 my-2 hover:bg-[#22303c] cursor-pointer`,
   newsItemLeft: `flex-1`,
   newsItemCategory: `text-[#8899a6] text-xs font-semibold`,
   newsItemTitle: `text-sm font-bold`,
@@ -53,7 +53,25 @@ const Widgets = () => {
         ))}
         <div className={style.showMore}>Show more</div>
       </div>
-      <div className={style.section}></div>
+      <div className={style.section}>
+        <div className={style.title}>Who To Follow</div>
+        {whoToFollow.map((item, index) => (
+          <div key={index} className={style.item}>
+            <div>
+              <img
+                src={item.avatar}
+                alt={item.handle}
+                className={style.followAvatar}
+              />
+            </div>
+            <div className={style.profileDetails}>
+              <div className={style.name}>{item.name}</div>
+              <div className={style.handle}>{item.handle}</div>
+            </div>
+            <div className={style.followButton}>Follow</div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
