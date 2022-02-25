@@ -69,6 +69,12 @@ const ProfileHeader = () => {
             )}
           </div>
         </div>
+        <div className={style.nav}>
+          <div className={style.activeNav}>Tweets</div>
+          <div>Tweets & Replies</div>
+          <div>Media</div>
+          <div>Likes</div>
+        </div>
       </div>
     </div>
   )
