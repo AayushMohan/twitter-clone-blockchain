@@ -1,4 +1,5 @@
-import React from 'react'
+import { news, whoToFollow } from '../lib/static'
+import { BiSearch } from 'react-icons/bi'
 
 const style = {
   wrapper: `flex-[1] p-4`,
