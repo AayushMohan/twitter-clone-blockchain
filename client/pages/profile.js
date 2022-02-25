@@ -1,4 +1,5 @@
-import React from 'react'
+import Sidebar from '../components/Sidebar'
+import Widgets from '../components/Widgets'
 
 const style = {
   wrapper: `flex justify-center h-screen w-screen select-none bg-[#15202b] text-white`,
@@ -7,7 +8,18 @@ const style = {
 }
 
 const profile = () => {
-  return <div className={style.wrapper}>profile</div>
+  return (
+    <div className={style.wrapper}>
+      <div className={style.content}>
+        <Sidebar />
+        <div className={style.mainContent}>
+          {/* Profile Header */}
+          {/* Profile Tweets */}
+        </div>
+        <Widgets />
+      </div>
+    </div>
+  )
 }
 
 export default profile
