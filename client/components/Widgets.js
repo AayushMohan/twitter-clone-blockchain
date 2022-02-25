@@ -51,7 +51,9 @@ const Widgets = () => {
             </div>
           </div>
         ))}
+        <div className={style.showMore}>Show more</div>
       </div>
+      <div className={style.section}></div>
     </div>
   )
 }
