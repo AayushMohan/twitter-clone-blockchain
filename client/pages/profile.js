@@ -7,7 +7,7 @@ const style = {
 }
 
 const profile = () => {
-  return <div>profile</div>
+  return <div className={style.wrapper}>profile</div>
 }
 
 export default profile
