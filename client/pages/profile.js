@@ -1,3 +1,5 @@
+import ProfileHeader from '../components/profile/ProfileHeader'
+import ProfileTweets from '../components/profile/ProfileTweets'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
 
@@ -13,8 +15,8 @@ const profile = () => {
       <div className={style.content}>
         <Sidebar />
         <div className={style.mainContent}>
-          {/* Profile Header */}
-          {/* Profile Tweets */}
+          <ProfileHeader />
+          <ProfileTweets />
         </div>
         <Widgets />
       </div>
