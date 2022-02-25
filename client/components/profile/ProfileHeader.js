@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import React from 'react'
 
 const style = {
@@ -14,10 +15,19 @@ const style = {
   profileImageMint: `bg-white text-black px-3 py-1 rounded-full hover:bg-[#8899a6] cursor-pointer`,
   details: `px-3`,
   nav: `flex justify-around mt-4 mb-2 text-xs font-semibold text-[#8899a6]`,
-  active
+  activeNav: `text-white`,
+}
 
 const ProfileHeader = () => {
-  return <div>ProfileHeader</div>
+  return (
+    <div className={style.wrapper}>
+      <div className={style.header}>
+        <div onClick={() => Router.push('/')} className={style.backButton}>
+          <BsArrowLeftShort />
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default ProfileHeader
