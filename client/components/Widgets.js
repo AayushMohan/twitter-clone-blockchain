@@ -24,7 +24,29 @@ const style = {
 }
 
 const Widgets = () => {
-  return <div>Widgets</div>
+  return (
+    <div className={style.wrapper}>
+      <div className={style.searchBar}>
+        <BiSearch className={style.searchIcon} />
+        <input
+          type="text"
+          placeholder="Search Twitter"
+          className={style.inputBox}
+        />
+      </div>
+      <div className={style.section}>
+        <div className={style.title}>What's happening?</div>
+        {news.map((item, index) => (
+          <div key={index} className={style.item}>
+            <div className={style.newsItemLeft}>
+              <div className={style.newsItemCategory}>{item.category}</div>
+              <div className={style.newsItemTitle}>{item.title}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default Widgets
