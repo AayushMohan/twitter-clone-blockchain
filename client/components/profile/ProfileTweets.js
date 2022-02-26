@@ -45,8 +45,14 @@ const tweets = [
 const ProfileTweets = () => {
   return (
     <div className={style.wrapper}>
-      {tweets.map((tweet, index) => (
-        <Post />
+      {tweets?.map((tweet, index) => (
+        <Post
+          key={index}
+          displayName="Aayush Mohan"
+          userName={`${tweet.userName.slice(0, 4)}...${tweets.userName.slice(
+            -4
+          )}`}
+        />
       ))}
     </div>
   )
