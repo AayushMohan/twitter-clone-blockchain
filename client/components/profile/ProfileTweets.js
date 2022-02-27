@@ -49,9 +49,13 @@ const ProfileTweets = () => {
         <Post
           key={index}
           displayName="Aayush Mohan"
-          userName={`${tweet.userName.slice(0, 4)}...${tweets.userName.slice(
+          userName={`${tweet.userName.slice(0, 4)}...${tweet.userName.slice(
             -4
           )}`}
+          text={tweet.text}
+          avatar={tweet.avatar}
+          isProfileImageNft={tweet.isProfileImageNFT}
+          timeStamp={tweet.timeStamp}
         />
       ))}
     </div>
