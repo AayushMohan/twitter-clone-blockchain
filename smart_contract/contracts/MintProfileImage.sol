@@ -38,7 +38,7 @@ contract ProfileImageNfts is ERC721, Ownable {
     }
 
     function getAlltoken() public view returns (RenderToken[] memory) {
-        uint256[] latestId = _tokenIds.current();
+        uint256 latestId = _tokenIds.current();
         RenderToken[] memory res = new RenderToken[](latestId);
         for (uint256 i = 0; i <= latestId; i++) {
             if (_exists(i)) {
@@ -55,7 +55,7 @@ contract ProfileImageNfts is ERC721, Ownable {
     {
         uint256 newId = _tokenIds.current();
         _mint(recipients, newId);
-        _setTokenURI(newId, _uri);
+        _setTokenURIs(newId, _uri);
         _tokenIds.increment();
         return newId;
     }
