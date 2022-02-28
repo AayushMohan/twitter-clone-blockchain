@@ -1,12 +1,19 @@
 const hre = require("hardhat");
 
 async function main() {
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const profileImageMinterFactory = await hre.ethers.getContractFactory(
+    "ProfileImageNfts"
+  );
+  const profileImageContract = await profileImageFactory.deploy(
+    "Hello, Hardhat!"
+  );
 
-  await greeter.deployed();
+  await profileImageContract.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+  console.log(
+    "Profile Image Minter deployed to:",
+    profileImageContract.address
+  );
 }
 
 main()
