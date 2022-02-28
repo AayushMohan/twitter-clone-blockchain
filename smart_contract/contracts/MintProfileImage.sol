@@ -39,5 +39,6 @@ contract ProfileImageNfts is ERC721, Ownable {
 
     function getAlltoken() public view returns (RenderToken[] memory) {
         uint256[] latestId = _tokenIds.current();
+        RenderToken[] memory res = new RenderToken[](latestId);
     }
 }
