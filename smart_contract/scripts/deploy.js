@@ -4,9 +4,7 @@ async function main() {
   const profileImageMinterFactory = await hre.ethers.getContractFactory(
     "ProfileImageNfts"
   );
-  const profileImageContract = await profileImageFactory.deploy(
-    "Hello, Hardhat!"
-  );
+  const profileImageContract = await profileImageMinterFactory.deploy();
 
   await profileImageContract.deployed();
 
