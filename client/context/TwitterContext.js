@@ -3,8 +3,29 @@ import { Children, createContext, useEffect, useState } from 'react'
 export const TwitterContext = createContext()
 
 export const TwitterProvider = ({ children }) => {
+  const [appStatus, setAppStatus]  = useState('loading')
+  const [currentAccount, setCurrentAccount] = useState('')
+
+  useEffect(() => {
+    checkIfWalletIsConnected()
+  }, [])
+
    const checkIfWalletIsConnected = async () => {
-    if (!window.ethereum) {
+    if (!window.ethereum) return 
+    try{
+      const addressArray = await window.ethereum.request({
+        method: 'eth_accounts',
+      })
+
+      if (addressArray.length > 0) {
+        // Connected
+        setAppStatus('connected')
+        setCurrentAccount(addressArray[0])
+      } else {
+        // Not Connected
+      }
+    } catch (error) {
+      console.log(error)
     }
    }
    return( 
