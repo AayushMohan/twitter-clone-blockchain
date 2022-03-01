@@ -11,7 +11,7 @@ export const TwitterProvider = ({ children }) => {
   }, [])
 
    const checkIfWalletIsConnected = async () => {
-    if (!window.ethereum) return 
+    if (!window.ethereum) return setAppStatus('noMetaMask') 
     try{
       const addressArray = await window.ethereum.request({
         method: 'eth_accounts',
@@ -23,10 +23,22 @@ export const TwitterProvider = ({ children }) => {
         setCurrentAccount(addressArray[0])
       } else {
         // Not Connected
+        setAppStatus('notConnected')
       }
     } catch (error) {
       console.log(error)
     }
+   }
+
+   const connectToWallet = async () => {
+     if(!window.ethereum) return setAppStatus('noMetaMask')
+
+     try{
+
+     } catch (error) {
+       setAppStatus('error')
+     }
+
    }
    return( 
    <TwitterContext.Provider value={}>{children}</TwitterContext.Provider>
