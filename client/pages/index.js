@@ -74,5 +74,11 @@ export default function Home() {
     </div>
   )
 
+  const loading = (
+    <div className={style.loginContainer}>
+      <div className={style.loginContent}>Loading...</div>
+    </div>
+  )
+
   return <div className={style.wrapper}>{app(appStatus)}</div>
 }
