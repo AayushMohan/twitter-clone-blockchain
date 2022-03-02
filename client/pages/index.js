@@ -1,6 +1,9 @@
+import { useContext } from 'react'
+import { TwitterContext } from '../context/TwitterContext'
 import Feed from '../components/home/Feed'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
+import Image from 'next/image'
 
 const style = {
   wrapper: `flex justify-center h-screen w-screen select-none bg-[#15202b] text-white`,
@@ -11,13 +14,31 @@ const style = {
 }
 
 export default function Home() {
-  return (
-    <div className={style.wrapper}>
-      <div className={style.content}>
-        <Sidebar />
-        <Feed />
-        <Widgets />
-      </div>
+  const { appStatus, connectToWallet } = useContext(TwitterContext)
+
+  const app = (status = appStatus) => {
+    switch (status) {
+      case value:
+        break
+
+      default:
+        break
+    }
+  }
+
+  const userLoggedIn = (
+    <div className={style.content}>
+      <Sidebar />
+      <Feed />
+      <Widgets />
     </div>
   )
+
+  const noUserFound = (
+    <div>
+      <Image />
+    </div>
+  )
+
+  return <div className={style.wrapper}>{app(appStatus)}</div>
 }
