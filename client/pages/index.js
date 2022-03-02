@@ -65,5 +65,11 @@ export default function Home() {
     </div>
   )
 
+  const error = (
+    <div className={style.loginContainer}>
+      <Image src={errorImg} height={200} width={200} />
+    </div>
+  )
+
   return <div className={style.wrapper}>{app(appStatus)}</div>
 }
