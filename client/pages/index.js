@@ -20,15 +20,20 @@ export default function Home() {
 
   const app = (status = appStatus) => {
     switch (status) {
-      case value:
-        break
-
+      case 'connected':
+        return userLoggedIn
+      case 'notConnected':
+        return noUserFound
+      case 'noMetaMask':
+        return noMetaMaskFound
+      case 'error':
+        return error
       default:
-        break
+        return loading
     }
   }
 
-  const userLogged = (
+  const userLoggedIn = (
     <div className={style.content}>
       <Sidebar />
       <Feed />
