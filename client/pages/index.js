@@ -37,6 +37,13 @@ export default function Home() {
   const noUserFound = (
     <div>
       <Image />
+      <div>
+        <a
+          target="_blank"
+          rel="noreferrer"
+          href={`https://metamask.io/download.html`}
+        ></a>
+      </div>
     </div>
   )
 
