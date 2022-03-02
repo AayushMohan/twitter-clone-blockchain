@@ -35,7 +35,7 @@ export default function Home() {
 
   const userLoggedIn = (
     <div className={style.content}>
-      <Sidebar />
+      <Sidebar initialSelectedIcon={'Home'} />
       <Feed />
       <Widgets />
     </div>
@@ -50,20 +50,20 @@ export default function Home() {
       >
         Connect Wallet
       </div>
-      <div>Connect to Wallet</div>
+      <div className={style.loginContent}>Connect to Metamask.</div>
     </div>
   )
 
   const noMetaMaskFound = (
-    <div>
-      <Image src={metamaskLogo} height={200} width={200} />
-      <div>
+    <div className={style.loginContainer}>
+      <Image src={metamaskLogo} width={200} height={200} />
+      <div className={style.loginContent}>
         <a
           target="_blank"
           rel="noreferrer"
           href={`https://metamask.io/download.html`}
         >
-          You must install Metamask, a <br /> visual Ethereum wallet, in your
+          You must install Metamask, a <br /> virtual Ethereum wallet, in your
           browser.
         </a>
       </div>
@@ -72,9 +72,9 @@ export default function Home() {
 
   const error = (
     <div className={style.loginContainer}>
-      <Image src={errorImg} height={250} width={250} />
-      <div className={style.loginContainer}>
-        An error occurred. Please try again later or use another browser.
+      <Image src={errorImg} width={250} height={200} />
+      <div className={style.loginContent}>
+        An error occurred. Please try again later or from another browser.
       </div>
     </div>
   )
