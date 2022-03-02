@@ -4,6 +4,8 @@ import Feed from '../components/home/Feed'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
 import Image from 'next/image'
+import metamaskLogo from '../assets/metamask.png'
+import errorImg from '../assets/error.png'
 
 const style = {
   wrapper: `flex justify-center h-screen w-screen select-none bg-[#15202b] text-white`,
@@ -26,7 +28,7 @@ export default function Home() {
     }
   }
 
-  const userLoggedIn = (
+  const userLogged = (
     <div className={style.content}>
       <Sidebar />
       <Feed />
@@ -35,8 +37,21 @@ export default function Home() {
   )
 
   const noUserFound = (
+    <div className={style.loginContainer}>
+      <Image src={metamaskLogo} width={200} height={200} />
+      <div
+        className={style.walletConnectButton}
+        onClick={() => connectToWallet()}
+      >
+        Connect Wallet
+      </div>
+      <div>Connect to Wallet</div>
+    </div>
+  )
+
+  const noMetaMaskFound = (
     <div>
-      <Image src={} height={200} width={200} />
+      <Image src={metamaskLogo} height={200} width={200} />
       <div>
         <a
           target="_blank"
