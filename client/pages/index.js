@@ -67,7 +67,10 @@ export default function Home() {
 
   const error = (
     <div className={style.loginContainer}>
-      <Image src={errorImg} height={200} width={200} />
+      <Image src={errorImg} height={250} width={250} />
+      <div className={style.loginContainer}>
+        An error occurred. Please try again later or use another browser.
+      </div>
     </div>
   )
 
