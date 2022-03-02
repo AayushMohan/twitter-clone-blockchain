@@ -36,13 +36,16 @@ export default function Home() {
 
   const noUserFound = (
     <div>
-      <Image />
+      <Image src={} height={200} width={200} />
       <div>
         <a
           target="_blank"
           rel="noreferrer"
           href={`https://metamask.io/download.html`}
-        ></a>
+        >
+          You must install Metamask, a <br /> visual Ethereum wallet, in your
+          browser.
+        </a>
       </div>
     </div>
   )
