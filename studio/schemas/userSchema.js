@@ -1,1 +1,1 @@
-export const userSchema = [];
+export const userSchema = {};
