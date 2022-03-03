@@ -53,6 +53,23 @@ export const TwitterProvider = ({ children }) => {
       setAppStatus('error')
     }
   }
+  /**
+   * Creates an account in Sanity DB if the user does not already have one
+   * @param {String} userAddress Wallet address of the currently logged in user
+   */
+
+  const createUserAccount = async (userWalletAddress = currentAccount) => {
+    if (!window.ethereum) return setAppStatus('noMetaMask')
+    try {
+      const userDoc = {}
+      // create userDoc
+      // upload
+    } catch (error) {
+      router.push('/')
+      setAppStatus('error')
+    }
+  }
+
   return (
     <TwitterContext.Provider
       value={{ appStatus, currentAccount, connectToWallet }}
