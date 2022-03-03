@@ -23,5 +23,21 @@ export const userSchema = {
       title: "Is Profile Image NFT",
       type: "boolean",
     },
+    {
+      name: "coverImage",
+      title: "Cover Image",
+      type: "string",
+    },
+    {
+      name: "tweets",
+      title: "Tweets",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: [{ type: "tweets" }],
+        },
+      ],
+    },
   ],
 };
