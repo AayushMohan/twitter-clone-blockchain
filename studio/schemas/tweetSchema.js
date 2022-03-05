@@ -1,12 +1,12 @@
 export const tweetSchema = {
   name: "tweets",
-  title: "Tweets",
   type: "document",
+  title: "Tweets",
   fields: [
     {
-      name: "title",
-      title: "Title",
+      name: "tweet",
       type: "string",
+      title: "Tweet",
     },
     {
       name: "timestamp",

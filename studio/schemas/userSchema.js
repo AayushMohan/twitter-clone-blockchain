@@ -1,22 +1,22 @@
 export const userSchema = {
   name: "users",
-  title: "Users",
   type: "document",
+  title: "Users",
   fields: [
     {
       name: "name",
-      title: "Name",
       type: "string",
+      title: "Name",
     },
     {
       name: "walletAddress",
-      title: "Wallet Address",
       type: "string",
+      title: "Wallet Address",
     },
     {
       name: "profileImage",
-      title: "Profile Image",
       type: "string",
+      title: "Profile Image",
     },
     {
       name: "isProfileImageNft",
@@ -25,8 +25,8 @@ export const userSchema = {
     },
     {
       name: "coverImage",
-      title: "Cover Image",
       type: "string",
+      title: "Cover Image",
     },
     {
       name: "tweets",
