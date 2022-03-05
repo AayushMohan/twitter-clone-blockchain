@@ -20,9 +20,7 @@ export const TwitterProvider = ({ children }) => {
       const addressArray = await window.ethereum.request({
         method: 'eth_accounts',
       })
-
       if (addressArray.length > 0) {
-        // Connected
         setAppStatus('connected')
         setCurrentAccount(addressArray[0])
         createUserAccount(addressArray[0])
@@ -31,21 +29,20 @@ export const TwitterProvider = ({ children }) => {
         setAppStatus('notConnected')
       }
     } catch (error) {
-      console.log(error)
+      console.log('error')
     }
   }
 
   const connectToWallet = async () => {
     if (!window.ethereum) return setAppStatus('noMetaMask')
-
     try {
       setAppStatus('loading')
 
       const addressArray = await window.ethereum.request({
-        method: 'eth_accounts',
+        method: 'eth_requestAccounts',
       })
-
       if (addressArray.length > 0) {
+        setAppStatus('connected')
         setCurrentAccount(addressArray[0])
         createUserAccount(addressArray[0])
       } else {
@@ -56,10 +53,6 @@ export const TwitterProvider = ({ children }) => {
       setAppStatus('error')
     }
   }
-  /**
-   * Creates an account in Sanity DB if the user does not already have one
-   * @param {String} userAddress Wallet address of the currently logged in user
-   */
 
   const createUserAccount = async (userWalletAddress = currentAccount) => {
     if (!window.ethereum) return setAppStatus('noMetaMask')

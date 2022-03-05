@@ -28,7 +28,7 @@ const ProfileHeader = () => {
   return (
     <div className={style.wrapper}>
       <div className={style.header}>
-        <div onClick={() => Router.push('/')} className={style.backButton}>
+        <div onClick={() => router.push('/')} className={style.backButton}>
           <BsArrowLeftShort />
         </div>
         <div className={style.details}>
