@@ -26,13 +26,14 @@ const style = {
 
 const TweetBox = () => {
   const [tweetMessage, setTweetMessage] = useState('')
+  const { currentAccount } = useContext(TwitterContext)
 
   const postTweet = (event) => {
     event.preventDefault()
 
     if (!tweetMessage) return
 
-    const tweetId = `${Date}`
+    const tweetId = `${currentAccount}_${Date.now()}`
   }
 
   return (
