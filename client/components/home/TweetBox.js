@@ -7,6 +7,8 @@ import {
 } from 'react-icons/ri'
 import { IoMdCalendar } from 'react-icons/io'
 import { MdOutlineLocationOn } from 'react-icons/md'
+import { client } from '../../lib/client'
+import { TwitterContext } from '../../context/TwitterContext'
 
 const style = {
   wrapper: `px-4 flex flex-row border-b border-[#38444d] pb-4`,
@@ -27,7 +29,10 @@ const TweetBox = () => {
 
   const postTweet = (event) => {
     event.preventDefault()
-    console.log(tweetMessage)
+
+    if (!tweetMessage) return
+
+    const tweetId = `${Date}`
   }
 
   return (
