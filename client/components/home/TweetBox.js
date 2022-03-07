@@ -37,9 +37,9 @@ const TweetBox = () => {
 
     const tweetDoc = {
       _type: 'tweets',
-      _id: 'tweetId',
+      _id: tweetId,
       tweet: tweetMessage,
-      timestamp: new Date(Date.now().toISOString()),
+      timestamp: new Date(Date.now()).toISOString(),
       author: {
         _key: tweetId,
         _type: 'reference',
@@ -55,10 +55,11 @@ const TweetBox = () => {
       .insert('after', 'tweets[-1]', [
         {
           _key: tweetId,
-          _type: 'reference',
-          _ref: 'tweetId',
+          _type: tweetId,
+          _ref: 'reference',
         },
-      ]).commit
+      ])
+      .commit()
 
     setTweetMessage('')
   }
