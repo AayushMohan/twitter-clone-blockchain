@@ -34,6 +34,33 @@ const TweetBox = () => {
     if (!tweetMessage) return
 
     const tweetId = `${currentAccount}_${Date.now()}`
+
+    const tweetDoc = {
+      _type: 'tweets',
+      _id: 'tweetId',
+      tweet: tweetMessage,
+      timestamp: new Date(Date.now().toISOString()),
+      author: {
+        _key: tweetId,
+        _type: 'reference',
+        _ref: currentAccount,
+      },
+    }
+
+    await client.createIfNotExists(tweetDoc)
+
+    await client
+      .patch(currentAccount)
+      .setIfMissing({ tweets: [] })
+      .insert('after', 'tweets[-1]', [
+        {
+          _key: tweetId,
+          _type: 'reference',
+          _ref: 'tweetId',
+        },
+      ]).commit
+
+    setTweetMessage('')
   }
 
   return (
