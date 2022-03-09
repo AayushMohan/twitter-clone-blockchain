@@ -7,6 +7,7 @@ export const TwitterContext = createContext()
 export const TwitterProvider = ({ children }) => {
   const [appStatus, setAppStatus] = useState('loading')
   const [currentAccount, setCurrentAccount] = useState('')
+  const [tweets, setTweets] = useState([])
 
   const router = useRouter()
 
@@ -81,6 +82,10 @@ export const TwitterProvider = ({ children }) => {
         timestamp
       }|order(timestamp desc)
     `
+
+    const sanityResponse = await client.fetch(query)
+
+    setTweets([])
   }
 
   return (
