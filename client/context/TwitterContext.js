@@ -73,6 +73,16 @@ export const TwitterProvider = ({ children }) => {
     }
   }
 
+  const fetchTweets = async () => {
+    const query = `
+      *[_type == "tweets"]{
+        "author": author->{name, walletAddress, profileImage, isProfileImageNft},
+        tweet,
+        timestamp
+      }|order(timestamp desc)
+    `
+  }
+
   return (
     <TwitterContext.Provider
       value={{ appStatus, currentAccount, connectToWallet }}
