@@ -86,6 +86,21 @@ export const TwitterProvider = ({ children }) => {
     const sanityResponse = await client.fetch(query)
 
     setTweets([])
+
+    sanityResponse.forEach(async (items) => {
+      // Profile Image
+
+      const newItem = {
+        tweet: items.tweet,
+        timestamp: items.timestamp,
+        author: {
+          name: items.author.name,
+          walletAddress: items.author.walletAddress,
+          isProfileImageNft: items.author.isProfileImageNft,
+          profileImage: items.author.profileImage,
+        },
+      }
+    })
   }
 
   return (
