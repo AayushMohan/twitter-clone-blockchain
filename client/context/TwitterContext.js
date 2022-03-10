@@ -100,6 +100,7 @@ export const TwitterProvider = ({ children }) => {
           profileImage: items.author.profileImage,
         },
       }
+      setTweets((prevState) => [...prevState, newItem])
     })
   }
 
