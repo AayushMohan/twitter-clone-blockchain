@@ -133,7 +133,14 @@ export const TwitterProvider = ({ children }) => {
 
   return (
     <TwitterContext.Provider
-      value={{ appStatus, currentAccount, connectToWallet }}
+      value={{
+        appStatus,
+        currentAccount,
+        connectToWallet,
+        fetchTweets,
+        tweets,
+        currentUser,
+      }}
     >
       {children}
     </TwitterContext.Provider>
