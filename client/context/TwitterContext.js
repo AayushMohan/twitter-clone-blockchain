@@ -16,6 +16,10 @@ export const TwitterProvider = ({ children }) => {
     checkIfWalletIsConnected()
   }, [])
 
+  useEffect(() => {
+    if (!currentAccount && appStatus === 'connected') return
+  }, [currentAccount, appStatus])
+
   const checkIfWalletIsConnected = async () => {
     if (!window.ethereum) return setAppStatus('noMetaMask')
     try {
