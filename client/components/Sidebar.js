@@ -16,6 +16,7 @@ import {
   BsPerson,
   BsPersonFill,
 } from 'react-icons/bs'
+import { TwitterContext } from '../context/TwitterContext'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -34,7 +35,7 @@ const style = {
 
 const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
   const [selected, setSelected] = useState(initialSelectedIcon)
-  const router = useRouter()
+  const { currentAccount, currentUser } = useContext(TwitterContext)
   return (
     <div className={style.wrapper}>
       <div className={style.twitterIconContainer}>
@@ -100,7 +101,7 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
         <div className={style.profileLeft}></div>
         <div className={style.profileRight}>
           <div className={style.details}>
-            <div className={style.name}>AayushMohan</div>
+            <div className={style.name}>{currentUser.name}</div>
             <div className={style.handle}>@0x22df...5xf2df</div>
           </div>
           <div className={style.moreContainer}>
