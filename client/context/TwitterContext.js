@@ -104,6 +104,21 @@ export const TwitterProvider = ({ children }) => {
     })
   }
 
+  const getCurrentUserDetails = async (userAccount = currentAccount) => {
+    if (appStatus !== 'connected') return
+
+    const query = `
+      *[_type == "users" && _id == "${userAccount}"]{
+        "tweets": tweets[]->{timestamp, tweet}|order(timestamp desc),
+        name,
+        profileImage,
+        isProfileImageNft,
+        coverImage,
+        walletAddress
+      }
+    `
+  }
+
   return (
     <TwitterContext.Provider
       value={{ appStatus, currentAccount, connectToWallet }}
