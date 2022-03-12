@@ -8,6 +8,7 @@ export const TwitterProvider = ({ children }) => {
   const [appStatus, setAppStatus] = useState('loading')
   const [currentAccount, setCurrentAccount] = useState('')
   const [tweets, setTweets] = useState([])
+  const [currentUser, setCurrentUser] = useState({})
 
   const router = useRouter()
 
@@ -117,6 +118,17 @@ export const TwitterProvider = ({ children }) => {
         walletAddress
       }
     `
+    const sanityResponse = await client.fetch(query)
+
+    // Profile Image
+
+    setCurrentUser({
+      tweets: sanityResponse[0].tweets,
+      name: sanityResponse[0].name,
+      profileImage: sanityResponse[0].isProfileImageNft,
+      coverImage: sanityResponse[0].coverImage,
+      walletAddress: sanityResponse[0].walletAddress,
+    })
   }
 
   return (
