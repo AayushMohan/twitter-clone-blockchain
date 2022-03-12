@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { useState } from 'react'
+import { Router, useRouter } from 'next/router'
+import { useState, useContext } from 'react'
 import { FiMoreHorizontal } from 'react-icons/fi'
 import { VscTwitter } from 'react-icons/vsc'
 import SidebarOption from './SidebarOption'
@@ -33,6 +34,7 @@ const style = {
 
 const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
   const [selected, setSelected] = useState(initialSelectedIcon)
+  const router = useRouter()
   return (
     <div className={style.wrapper}>
       <div className={style.twitterIconContainer}>
@@ -85,7 +87,14 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
         />
         <SidebarOption Icon={CgMoreO} text="More" setSelected={setSelected} />
 
-        <div className={style.tweetButton}>Mint</div>
+        <div
+          onClick={() => {
+            router.push(`${router.pathname}/?mint=${currentAccount}`)
+          }}
+          className={style.tweetButton}
+        >
+          Mint
+        </div>
       </div>
       <div className={style.profileButton}>
         <div className={style.profileLeft}></div>
