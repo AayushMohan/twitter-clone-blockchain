@@ -29,8 +29,7 @@ export const whoToFollow = [
   {
     name: 'Rafeh Qazi',
     handle: '@cleverqazi',
-    avatar:
-      'https://pbs.twimg.com/profile_images/1472075657920221184/JhAI3WGm_400x400.jpg',
+    avatar: 'https://avatars.githubusercontent.com/u/60327839?s=200&v=4',
   },
   {
     name: 'David Rakosi',

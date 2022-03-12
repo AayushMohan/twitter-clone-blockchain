@@ -1,22 +1,23 @@
-import Link from 'next/link'
-import { Router, useRouter } from 'next/router'
 import { useState, useContext } from 'react'
-import { FiMoreHorizontal } from 'react-icons/fi'
-import { VscTwitter } from 'react-icons/vsc'
+import { useRouter } from 'next/router'
+import { TwitterContext } from '../context/TwitterContext'
 import SidebarOption from './SidebarOption'
 import { RiHome7Line, RiHome7Fill, RiFileList2Fill } from 'react-icons/ri'
 import { BiHash } from 'react-icons/bi'
-import { FiBell } from 'react-icons/fi'
+import { FiBell, FiMoreHorizontal } from 'react-icons/fi'
 import { HiOutlineMail, HiMail } from 'react-icons/hi'
 import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
+import { VscTwitter } from 'react-icons/vsc'
+// import Modal from 'react-modal'
+// import { customStyles } from '../lib/constants'
+// import ProfileImageMinter from './profile/mintingModal/ProfileImageMinter'
 import {
   BsBookmark,
   BsBookmarkFill,
   BsPerson,
   BsPersonFill,
 } from 'react-icons/bs'
-import { TwitterContext } from '../context/TwitterContext'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,

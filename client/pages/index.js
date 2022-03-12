@@ -3,9 +3,9 @@ import { TwitterContext } from '../context/TwitterContext'
 import Feed from '../components/home/Feed'
 import Sidebar from '../components/Sidebar'
 import Widgets from '../components/Widgets'
-import Image from 'next/image'
 import metamaskLogo from '../assets/metamask.png'
 import errorImg from '../assets/error.png'
+import Image from 'next/image'
 
 const style = {
   wrapper: `flex justify-center h-screen w-screen select-none bg-[#15202b] text-white`,
@@ -15,19 +15,23 @@ const style = {
   loginContent: `text-3xl font-bold text-center mt-24`,
 }
 
-export default function Home() {
+const Home = () => {
   const { appStatus, connectToWallet } = useContext(TwitterContext)
 
   const app = (status = appStatus) => {
     switch (status) {
       case 'connected':
         return userLoggedIn
+
       case 'notConnected':
         return noUserFound
+
       case 'noMetaMask':
         return noMetaMaskFound
+
       case 'error':
         return error
+
       default:
         return loading
     }
@@ -87,3 +91,5 @@ export default function Home() {
 
   return <div className={style.wrapper}>{app(appStatus)}</div>
 }
+
+export default Home
