@@ -99,11 +99,23 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
         </div>
       </div>
       <div className={style.profileButton}>
-        <div className={style.profileLeft}></div>
+        <div className={style.profileLeft}>
+          <img
+            src={currentUser.profileImage}
+            alt="profile"
+            className={
+              currentUser.isProfileImage
+                ? `${style.profileImage} smallHex`
+                : style.profileImage
+            }
+          />
+        </div>
         <div className={style.profileRight}>
           <div className={style.details}>
             <div className={style.name}>{currentUser.name}</div>
-            <div className={style.handle}>@0x22df...5xf2df</div>
+            <div className={style.handle}>
+              @{currentAccount.slice(0, 6)}...{currentAccount.slice(39)}
+            </div>
           </div>
           <div className={style.moreContainer}>
             <FiMoreHorizontal />

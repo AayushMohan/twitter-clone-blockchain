@@ -22,8 +22,7 @@ const style = {
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState('')
-  const { currentAccount, fetchTweets, currentUser } =
-    useContext(TwitterContext)
+  const { currentAccount, currentUser, tweets } = useContext(TwitterContext)
 
   const submitTweet = async (event) => {
     event.preventDefault()
