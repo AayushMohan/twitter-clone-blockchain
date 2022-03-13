@@ -17,7 +17,8 @@ export const TwitterProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    if (!currentAccount && appStatus === 'connected') return
+    if (!currentAccount || appStatus === 'connected') return
+    getCurrentUserDetails
   }, [currentAccount, appStatus])
 
   const checkIfWalletIsConnected = async () => {
