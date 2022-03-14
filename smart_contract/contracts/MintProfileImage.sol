@@ -10,18 +10,17 @@ contract ProfileImageNfts is ERC721, Ownable {
     using Strings for uint256;
 
     Counters.Counter _tokenIds;
-
     mapping(uint256 => string) _tokenURIs;
 
     struct RenderToken {
-        uint256 tokenId;
-        string tokenURI;
+        uint256 id;
+        string uri;
         string space;
     }
 
     constructor() ERC721("ProfileImageNfts", "PIN") {}
 
-    function _setTokenURIs(uint256 tokenId, string memory _tokenURI) internal {
+    function _setTokenURI(uint256 tokenId, string memory _tokenURI) internal {
         _tokenURIs[tokenId] = _tokenURI;
     }
 
@@ -32,7 +31,7 @@ contract ProfileImageNfts is ERC721, Ownable {
         override
         returns (string memory)
     {
-        require(_exists(tokenId), "URI does not exist on that ID");
+        require(_exists(tokenId), "URI not exist on that ID");
         string memory _RUri = _tokenURIs[tokenId];
         return _RUri;
     }
@@ -49,13 +48,13 @@ contract ProfileImageNfts is ERC721, Ownable {
         return res;
     }
 
-    function mint(address recipients, string memory _uri)
+    function mint(address recipents, string memory _uri)
         public
         returns (uint256)
     {
         uint256 newId = _tokenIds.current();
-        _mint(recipients, newId);
-        _setTokenURIs(newId, _uri);
+        _mint(recipents, newId);
+        _setTokenURI(newId, _uri);
         _tokenIds.increment();
         return newId;
     }

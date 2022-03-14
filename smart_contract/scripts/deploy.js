@@ -1,10 +1,8 @@
-const hre = require("hardhat");
-
-async function main() {
-  const profileImageMinterFactory = await hre.ethers.getContractFactory(
+const main = async () => {
+  const profileImageFactory = await hre.ethers.getContractFactory(
     "ProfileImageNfts"
   );
-  const profileImageContract = await profileImageMinterFactory.deploy();
+  const profileImageContract = await profileImageFactory.deploy();
 
   await profileImageContract.deployed();
 
@@ -12,7 +10,7 @@ async function main() {
     "Profile Image Minter deployed to:",
     profileImageContract.address
   );
-}
+};
 
 (async () => {
   try {
