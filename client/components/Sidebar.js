@@ -9,7 +9,7 @@ import { HiOutlineMail, HiMail } from 'react-icons/hi'
 import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
-// import Modal from 'react-modal'
+import Modal from 'react-modal'
 // import { customStyles } from '../lib/constants'
 // import ProfileImageMinter from './profile/mintingModal/ProfileImageMinter'
 import {
@@ -37,6 +37,7 @@ const style = {
 const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
   const [selected, setSelected] = useState(initialSelectedIcon)
   const { currentAccount, currentUser } = useContext(TwitterContext)
+  const router = useRouter()
   return (
     <div className={style.wrapper}>
       <div className={style.twitterIconContainer}>
