@@ -11,13 +11,13 @@ import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
 import Modal from 'react-modal'
 // import { customStyles } from '../lib/constants'
-// import ProfileImageMinter from './profile/mintingModal/ProfileImageMinter'
 import {
   BsBookmark,
   BsBookmarkFill,
   BsPerson,
   BsPersonFill,
 } from 'react-icons/bs'
+import ProfileImageMinter from './mintingModal/ProfileImageMinter'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -123,6 +123,13 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
           </div>
         </div>
       </div>
+      <Modal
+        isOpen={Boolean(router.query.mint)}
+        onRequestClose={() => router.push('/')}
+        style={customStyle}
+      >
+        <ProfileImageMinter />
+      </Modal>
     </div>
   )
 }
