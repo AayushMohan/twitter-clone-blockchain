@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 import { BsArrowLeftShort } from 'react-icons/bs'
+import { useContext } from 'react'
+import { TwitterContext } from '../context/TwitterContext'
 
 const style = {
   wrapper: `border-[#38444d] border-b`,
@@ -21,9 +23,7 @@ const style = {
 
 const ProfileHeader = () => {
   const router = useRouter()
-
-  const isProfileImageNft = false
-  const currentAccount = '0x9740D80A3bdFF2bE7f6308B5f49C42D711a8d531'
+  const { currentAccount, currentUser } = useContext(TwitterContext)
 
   return (
     <div className={style.wrapper}>
@@ -32,13 +32,16 @@ const ProfileHeader = () => {
           <BsArrowLeftShort />
         </div>
         <div className={style.details}>
-          <div className={style.primary}>Aayush Mohan</div>
-          <div className={style.secondary}>4 Tweets</div>
+          <div className={style.primary}>{currentUser.name}</div>
+          <div className={style.secondary}>
+            {currentUser.tweets?.length}{' '}
+            {currentUser.tweets?.length === 1 ? 'Tweet' : 'Tweets'}
+          </div>
         </div>
       </div>
       <div className={style.coverPhotoContainer}>
         <img
-          src="https://pbs.twimg.com/profile_banners/1074622446437773312/1610392340/1500x500"
+          src={currentUser.coverImage}
           alt="cover"
           className={style.coverPhoto}
         />
@@ -58,7 +61,7 @@ const ProfileHeader = () => {
       </div>
       <div className={style.details}>
         <div>
-          <div className={style.primary}>Aayush Mohan</div>
+          <div className={style.primary}>{currentUser.name}</div>
         </div>
         <div>
           <div className={style.secondary}>
