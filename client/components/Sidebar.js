@@ -9,8 +9,7 @@ import { HiOutlineMail, HiMail } from 'react-icons/hi'
 import { FaRegListAlt, FaHashtag, FaBell } from 'react-icons/fa'
 import { CgMoreO } from 'react-icons/cg'
 import { VscTwitter } from 'react-icons/vsc'
-import Modal from 'react-modal'
-// import { customStyles } from '../lib/constants'
+import { customStyles } from '../lib/constants'
 import {
   BsBookmark,
   BsBookmarkFill,
@@ -18,6 +17,7 @@ import {
   BsPersonFill,
 } from 'react-icons/bs'
 import ProfileImageMinter from './mintingModal/ProfileImageMinter'
+import Modal from 'react-modal'
 
 const style = {
   wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -126,7 +126,7 @@ const Sidebar = ({ initialSelectedIcon = 'Home' }) => {
       <Modal
         isOpen={Boolean(router.query.mint)}
         onRequestClose={() => router.push('/')}
-        style={customStyle}
+        style={customStyles}
       >
         <ProfileImageMinter />
       </Modal>

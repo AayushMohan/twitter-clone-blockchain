@@ -1,14 +1,11 @@
 import { createContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { client } from '../lib/client'
 
 export const TwitterContext = createContext()
 
 export const TwitterProvider = ({ children }) => {
   const [appStatus, setAppStatus] = useState('loading')
   const [currentAccount, setCurrentAccount] = useState('')
-  const [tweets, setTweets] = useState([])
-  const [currentUser, setCurrentUser] = useState({})
 
   const router = useRouter()
 
@@ -17,41 +14,48 @@ export const TwitterProvider = ({ children }) => {
   }, [])
 
   useEffect(() => {
-    if (!currentAccount || appStatus === 'connected') return
+    if (!currentAccount || appStatus !== 'connected') return
     getCurrentUserDetails
   }, [currentAccount, appStatus])
 
+  /**
+   * Check If there is an active wallet connection
+   */
   const checkIfWalletIsConnected = async () => {
     if (!window.ethereum) return setAppStatus('noMetaMask')
     try {
       const addressArray = await window.ethereum.request({
         method: 'eth_accounts',
       })
+
       if (addressArray.length > 0) {
         setAppStatus('connected')
         setCurrentAccount(addressArray[0])
-        createUserAccount(addressArray[0])
       } else {
         router.push('/')
         setAppStatus('notConnected')
       }
     } catch (error) {
-      console.log('error')
+      setAppStatus('error')
     }
   }
 
+  /**
+   * Initiates MetaMask wallet connection
+   */
   const connectToWallet = async () => {
     if (!window.ethereum) return setAppStatus('noMetaMask')
+
     try {
       setAppStatus('loading')
 
       const addressArray = await window.ethereum.request({
         method: 'eth_requestAccounts',
       })
+
       if (addressArray.length > 0) {
         setAppStatus('connected')
         setCurrentAccount(addressArray[0])
-        createUserAccount(addressArray[0])
       } else {
         router.push('/')
         setAppStatus('notConnected')
@@ -60,92 +64,9 @@ export const TwitterProvider = ({ children }) => {
       setAppStatus('error')
     }
   }
-
-  const createUserAccount = async (userWalletAddress = currentAccount) => {
-    if (!window.ethereum) return setAppStatus('noMetaMask')
-    try {
-      const userDoc = {
-        _type: 'users',
-        _id: userWalletAddress,
-        name: 'Unnamed',
-        isProfileImageNFT: false,
-        profileImage: 'https://avatars.githubusercontent.com/u/66319691?v=4',
-        walletAddress: userWalletAddress,
-      }
-
-      await client.createIfNotExists(userDoc)
-    } catch (error) {
-      router.push('/')
-      setAppStatus('error')
-    }
-  }
-
-  const fetchTweets = async () => {
-    const query = `
-      *[_type == "tweets"]{
-        "author": author->{name, walletAddress, profileImage, isProfileImageNft},
-        tweet,
-        timestamp
-      }|order(timestamp desc)
-    `
-
-    const sanityResponse = await client.fetch(query)
-
-    setTweets([])
-
-    sanityResponse.forEach(async (items) => {
-      // Profile Image
-
-      const newItem = {
-        tweet: items.tweet,
-        timestamp: items.timestamp,
-        author: {
-          name: items.author.name,
-          walletAddress: items.author.walletAddress,
-          isProfileImageNft: items.author.isProfileImageNft,
-          profileImage: items.author.profileImage,
-        },
-      }
-      setTweets((prevState) => [...prevState, newItem])
-    })
-  }
-
-  const getCurrentUserDetails = async (userAccount = currentAccount) => {
-    if (appStatus !== 'connected') return
-
-    const query = `
-      *[_type == "users" && _id == "${userAccount}"]{
-        "tweets": tweets[]->{timestamp, tweet}|order(timestamp desc),
-        name,
-        profileImage,
-        isProfileImageNft,
-        coverImage,
-        walletAddress
-      }
-    `
-    const sanityResponse = await client.fetch(query)
-
-    // Profile Image
-
-    setCurrentUser({
-      tweets: sanityResponse[0].tweets,
-      name: sanityResponse[0].name,
-      profileImage: sanityResponse[0].isProfileImageNft,
-      coverImage: sanityResponse[0].coverImage,
-      walletAddress: sanityResponse[0].walletAddress,
-    })
-  }
-
   return (
     <TwitterContext.Provider
-      value={{
-        appStatus,
-        currentAccount,
-        connectToWallet,
-        fetchTweets,
-        tweets,
-        currentUser,
-      }}
+      value={{ appStatus, currentAccount, connectToWallet }}
     >
       {children}
     </TwitterContext.Provider>

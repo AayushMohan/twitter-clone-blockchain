@@ -22,9 +22,9 @@ const style = {
 
 function TweetBox() {
   const [tweetMessage, setTweetMessage] = useState('')
-  const { currentAccount, currentUser, tweets } = useContext(TwitterContext)
+  const { currentAccount, currentUser } = useContext(TwitterContext)
 
-  const submitTweet = async (event) => {
+  const postTweet = async (event) => {
     event.preventDefault()
 
     if (!tweetMessage) return
@@ -50,13 +50,13 @@ function TweetBox() {
       .insert('after', 'tweets[-1]', [
         {
           _key: tweetId,
-          _ref: tweetId,
           _type: 'reference',
+          _ref: tweetId,
         },
       ])
       .commit()
 
-    await fetchTweets()
+    // await fetchTweets()
     setTweetMessage('')
   }
 
